@@ -8,8 +8,9 @@
   --navbar-footer-color: #f9f9f9;
 }
 
+html,
 body {
   font-family: "Roboto", sans-serif;
   font-size: 12px;
-  columns: var(--body-text-color);
+  color: var(--body-text-color) !important;
 }
