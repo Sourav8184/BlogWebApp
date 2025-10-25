@@ -1,0 +1,57 @@
+.subscription-card {
+  max-width: 900px;
+  background: linear-gradient(135deg, #f0f9f9, #ffffff);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 12px 36px rgba(2, 100, 103, 0.2);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 18px 48px rgba(2, 100, 103, 0.3);
+  }
+
+  h3 {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.75rem;
+  }
+
+  .subs-text {
+    color: var(--body-text-color);
+    font-size: 1rem;
+    max-width: 70%;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .form-input {
+    border-radius: 50px;
+    border: 1px solid #cfd8dc;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 8px rgba(2, 100, 103, 0.25);
+      outline: none;
+    }
+  }
+
+  .btn-sub {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 12px 0;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+  }
+}
