@@ -1,0 +1,41 @@
+.bg-theme {
+  background: linear-gradient(135deg, var(--primary-color), #039c96);
+}
+
+.knowledge-header {
+  .knowledge-intro {
+    max-width: 650px;
+    font-size: 1.05rem;
+    opacity: 0.95;
+  }
+}
+
+.knowledge-posts {
+  background-color: #f9f9f9;
+
+  .container {
+    padding: 40px 20px;
+  }
+
+  app-post-card {
+    display: block;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .knowledge-header h1 {
+      font-size: 2rem;
+    }
+
+    .knowledge-header p {
+      font-size: 0.95rem;
+    }
+  }
+}
