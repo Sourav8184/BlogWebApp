@@ -47,22 +47,27 @@
   }
 
   .sidebar-card {
+    position: relative;
+    &.sticky-top {
+      top: -16px;
+      z-index: 10;
+      transition: top 0.3s ease;
+    }
+
     h5 {
       font-size: 1.1rem;
       border-bottom: 2px solid var(--primary-color);
     }
 
-    .related-posts {
-      app-post-card {
-        display: block;
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
+    .related-posts app-post-card {
+      display: block;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 
-        &:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
-        }
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
       }
     }
   }
@@ -71,6 +76,24 @@
     .sidebar-card {
       position: static !important;
       margin-top: 30px;
+      top: auto;
+      z-index: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-radius: 0.75rem;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .blog-detail-card {
+      padding: 10px;
+
+      .post-title {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
     }
   }
 }

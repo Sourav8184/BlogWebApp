@@ -65,6 +65,7 @@
             </p>
           </div>
         </article>
+        <app-comment-form></app-comment-form>
       </div>
 
       <!-- Sidebar with Post Cards -->
@@ -75,7 +76,7 @@
           </h5>
 
           <div class="related-posts">
-            <div *ngFor="let post of [1]" class="mb-4">
+            <div *ngFor="let post of [1, 2]" class="mb-4">
               <app-post-card></app-post-card>
             </div>
           </div>

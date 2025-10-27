@@ -1,0 +1,47 @@
+.card {
+  background: #ffffff;
+  transition: all 0.3s ease;
+  border-radius: 1rem;
+
+  .headingComment {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: 0.3px;
+  }
+
+  .heading {
+    font-weight: 600;
+    color: #495057;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .form-control {
+    border: 1px solid #dee2e6;
+    box-shadow: none;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(2, 100, 103, 0.1);
+    }
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: 500;
+
+    &:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+  }
+}
