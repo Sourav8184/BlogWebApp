@@ -1,1 +1,86 @@
-<p>single-post works!</p>
+<div class="post-detail-wrapper py-5">
+  <div class="container">
+    <div class="row g-5">
+      <!-- Main Blog Post -->
+      <div class="col-lg-9">
+        <article
+          class="blog-detail-card shadow-sm border-0 rounded-4 overflow-hidden bg-white"
+        >
+          <div class="post-image-wrapper position-relative">
+            <img
+              src="https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/4084346/cover_image/retina_1708x683/cover-cold-dive-into-react-native-a-beginners-tutorial-27d562bcfdbe9d5edfe1b4817816f996.png"
+              alt="React Native Beginner's Guide"
+              class="img-fluid w-100 post-image"
+            />
+            <div class="image-overlay"></div>
+            <div
+              class="post-category-badge position-absolute top-0 start-0 m-3"
+            >
+              <span class="badge bg-primary px-3 py-2">Technology</span>
+            </div>
+          </div>
+
+          <div class="card-body px-5 py-4">
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span class="badge bg-light text-danger">Design</span>
+              <span class="badge bg-light text-success">Feature</span>
+              <span class="badge bg-light text-info">Views – 100,202</span>
+              <span class="badge bg-light text-warning"
+                >Updated – Sep 20, 2025</span
+              >
+            </div>
+
+            <h1 class="post-title fw-bold mt-3 mb-3">
+              A Deep Dive into React Native — Building Seamless Cross-Platform
+              Apps
+            </h1>
+
+            <p class="lead text-muted mb-4">
+              React Native empowers developers to craft high-quality mobile
+              applications that feel native across iOS and Android. With the
+              power of JavaScript and React, it bridges the gap between
+              performance and flexibility.
+            </p>
+
+            <p>
+              This article takes you on a journey through the essentials of
+              React Native, exploring how to set up your development
+              environment, manage components, and leverage modern design
+              patterns for scalability. Learn best practices for state
+              management, optimizing performance, and integrating APIs like a
+              pro.
+            </p>
+
+            <blockquote
+              class="blockquote my-4 border-start border-4 ps-3 text-muted fst-italic"
+            >
+              "React Native is not just a framework—it's a mindset shift towards
+              faster, unified app development."
+            </blockquote>
+
+            <p>
+              By the end, you'll have a clear understanding of how to build
+              polished, efficient, and production-ready apps that deliver
+              exceptional user experiences across all devices.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Sidebar with Post Cards -->
+      <aside class="col-lg-3">
+        <div class="sidebar-card p-4 shadow-sm rounded-4 bg-white sticky-top">
+          <h5 class="fw-bold mb-4 text-primary border-bottom pb-2">
+            Related Posts
+          </h5>
+
+          <div class="related-posts">
+            <div *ngFor="let post of [1]" class="mb-4">
+              <app-post-card></app-post-card>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
