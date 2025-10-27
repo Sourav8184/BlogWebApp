@@ -1,0 +1,59 @@
+.terms-section {
+  .bg-theme {
+    background-color: var(--primary-color);
+    color: #fff;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .terms-content {
+    max-width: 750px;
+    margin: 0 auto;
+    line-height: 1.8;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    p {
+      color: var(--body-text-color, #596392);
+      font-size: 1rem;
+    }
+
+    h5 {
+      color: var(--primary-color);
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: var(--primary-color);
+        color: #fff;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bg-theme {
+      max-width: 100%;
+      padding: 2rem 1rem;
+    }
+
+    .terms-content {
+      padding: 2rem 1.25rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+}
