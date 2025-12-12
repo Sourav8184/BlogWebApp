@@ -9,7 +9,7 @@
     <div class="row g-4">
       <div
         class="col-lg-4 col-md-6 col-sm-12"
-        *ngFor="let featurePost of allFeaturePosts"
+        *ngFor="let featurePost of isFeaturePosts"
       >
         <app-post-card [post]="featurePost"></app-post-card>
       </div>
@@ -27,14 +27,8 @@
   </div>
 
   <div class="row g-4">
-    <div class="col-md-4">
-      <app-post-card></app-post-card>
-    </div>
-    <div class="col-md-4">
-      <app-post-card></app-post-card>
-    </div>
-    <div class="col-md-4">
-      <app-post-card></app-post-card>
+    <div class="col-md-4" *ngFor="let latestPost of isLatestPosts">
+      <app-post-card [post]="latestPost"></app-post-card>
     </div>
   </div>
 </section>

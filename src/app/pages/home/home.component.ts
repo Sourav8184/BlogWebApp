@@ -8,17 +8,25 @@ import { PostService } from 'src/app/services/posts.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  allFeaturePosts: Post[] = [];
+  isFeaturePosts: Post[] = [];
+  isLatestPosts: Post[] = [];
 
   constructor(private readonly postService: PostService) {}
 
   ngOnInit(): void {
-    this.loadPosts();
+    this.loadIsFeaturePosts();
+    this.loadIsLatestPosts();
   }
 
-  loadPosts(): void {
-    this.postService.getPosts().subscribe((data) => {
-      this.allFeaturePosts = data;
+  loadIsFeaturePosts(): void {
+    this.postService.getIsFeaturePosts().subscribe((data) => {
+      this.isFeaturePosts = data;
+    });
+  }
+
+  loadIsLatestPosts(): void {
+    this.postService.loadIsLatestPosts().subscribe((data) => {
+      this.isLatestPosts = data;
     });
   }
 }

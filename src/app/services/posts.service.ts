@@ -16,9 +16,29 @@ export class PostService {
     private readonly firestore: AngularFirestore,
   ) {}
 
-  getPosts(): Observable<Post[]> {
+  getIsFeaturePosts(): Observable<Post[]> {
     return this.firestore
-      .collection<Post>('posts', (ref) => ref.where('isFeatured', '==', true))
+      .collection<Post>('posts', (ref) =>
+        ref.where('isFeatured', '==', true).limit(3),
+      )
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((doc) => {
+            const id = doc.payload.doc.id;
+            const data = doc.payload.doc.data() as Post;
+            if (data.createdAt instanceof Timestamp) {
+              data.createdAt = data.createdAt.toDate();
+            }
+            return { id, ...data };
+          }),
+        ),
+      );
+  }
+
+  loadIsLatestPosts(): Observable<Post[]> {
+    return this.firestore
+      .collection<Post>('posts', (ref) => ref.orderBy('createdAt', 'desc'))
       .snapshotChanges()
       .pipe(
         map((actions) =>
