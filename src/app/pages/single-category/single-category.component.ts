@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Post } from 'src/app/interface/post.interface';
+import { PostService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-single-category',
@@ -6,7 +9,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./single-category.component.scss'],
 })
 export class SingleCategoryComponent implements OnInit {
-  constructor() {}
+  categoryPost: Post[] = [];
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly postService: PostService,
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (id) {
+        this.loadCategoryPost(id);
+      }
+    });
+  }
+
+  loadCategoryPost(id: string): void {
+    this.postService.loadCategoryPosts(id).subscribe((data) => {
+      this.categoryPost = data;
+    });
+  }
 }
