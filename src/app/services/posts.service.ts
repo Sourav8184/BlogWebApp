@@ -1,0 +1,36 @@
+import { Injectable } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Timestamp } from 'firebase/firestore';
+import { Post } from '../interface/post.interface';
+
+// This service handles post creation and image uploads
+@Injectable({
+  providedIn: 'root',
+})
+export class PostService {
+  constructor(
+    private readonly storage: AngularFireStorage,
+    private readonly firestore: AngularFirestore,
+  ) {}
+
+  getPosts(): Observable<Post[]> {
+    return this.firestore
+      .collection<Post>('posts', (ref) => ref.where('isFeatured', '==', true))
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((doc) => {
+            const id = doc.payload.doc.id;
+            const data = doc.payload.doc.data() as Post;
+            if (data.createdAt instanceof Timestamp) {
+              data.createdAt = data.createdAt.toDate();
+            }
+            return { id, ...data };
+          }),
+        ),
+      );
+  }
+}
