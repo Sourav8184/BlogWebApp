@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadIsFeaturePosts(): void {
-    this.postService.getIsFeaturePosts().subscribe((data) => {
+    this.postService.loadIsFeaturePosts().subscribe((data) => {
       this.isFeaturePosts = data;
     });
   }

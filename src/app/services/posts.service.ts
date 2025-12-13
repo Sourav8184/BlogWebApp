@@ -12,7 +12,7 @@ import { Post } from '../interface/post.interface';
 export class PostService {
   constructor(private readonly firestore: AngularFirestore) {}
 
-  getIsFeaturePosts(): Observable<Post[]> {
+  loadIsFeaturePosts(): Observable<Post[]> {
     return this.firestore
       .collection<Post>('posts', (ref) =>
         ref.where('isFeatured', '==', true).limit(3),
@@ -86,6 +86,26 @@ export class PostService {
 
           return { id, ...data };
         }),
+      );
+  }
+
+  loadSimilarPosts(categoryId: string): Observable<Post[]> {
+    return this.firestore
+      .collection<Post>('posts', (ref) =>
+        ref.where('category.id', '==', categoryId).limit(3),
+      )
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((doc) => {
+            const id = doc.payload.doc.id;
+            const data = doc.payload.doc.data() as Post;
+            if (data.createdAt instanceof Timestamp) {
+              data.createdAt = data.createdAt.toDate();
+            }
+            return { id, ...data };
+          }),
+        ),
       );
   }
 }

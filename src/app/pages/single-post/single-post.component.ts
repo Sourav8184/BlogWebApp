@@ -10,6 +10,7 @@ import { PostService } from 'src/app/services/posts.service';
 })
 export class SinglePostComponent implements OnInit {
   post!: Post;
+  similarPosts: Post[] = [];
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -27,6 +28,13 @@ export class SinglePostComponent implements OnInit {
   loadOnePost(id: string): void {
     this.postService.loadSinglePost(id).subscribe((post) => {
       this.post = post;
+      this.loadSimilarPosts(post.category.id!, post.id!);
+    });
+  }
+
+  loadSimilarPosts(categoryId: string, currentPostId: string): void {
+    this.postService.loadSimilarPosts(categoryId).subscribe((posts) => {
+      this.similarPosts = posts.filter((p) => p.id !== currentPostId);
     });
   }
 }
