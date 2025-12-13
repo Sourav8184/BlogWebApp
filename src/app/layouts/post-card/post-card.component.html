@@ -1,4 +1,4 @@
-<div class="card blog-card">
+<div class="card blog-card" [routerLink]="['/post', post?.id]">
   <img src="{{ post?.imagePath }}" alt="post-image" class="card-img-top" />
 
   <div class="card-body">

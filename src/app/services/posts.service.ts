@@ -69,4 +69,23 @@ export class PostService {
         ),
       );
   }
+
+  loadSinglePost(postId: string): Observable<Post> {
+    return this.firestore
+      .collection<Post>('posts')
+      .doc(postId)
+      .snapshotChanges()
+      .pipe(
+        map((doc) => {
+          const id = doc.payload.id;
+          const data = doc.payload.data() as Post;
+
+          if (data.createdAt instanceof Timestamp) {
+            data.createdAt = data.createdAt.toDate();
+          }
+
+          return { id, ...data };
+        }),
+      );
+  }
 }
