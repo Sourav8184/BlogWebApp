@@ -20,6 +20,7 @@ export class SinglePostComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
       if (id) {
+        this.postService.updatePostViews(id!);
         this.loadOnePost(id);
       }
     });

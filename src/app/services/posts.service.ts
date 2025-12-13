@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Timestamp } from 'firebase/firestore';
 import { Post } from '../interface/post.interface';
+import firebase from 'firebase/compat/app';
 
 // This service handles post creation and image uploads
 @Injectable({
@@ -107,5 +108,14 @@ export class PostService {
           }),
         ),
       );
+  }
+
+  updatePostViews(postId: string): void {
+    this.firestore
+      .collection('posts')
+      .doc(postId)
+      .update({
+        views: firebase.firestore.FieldValue.increment(1),
+      });
   }
 }

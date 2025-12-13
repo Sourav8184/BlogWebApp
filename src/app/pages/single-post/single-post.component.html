@@ -64,6 +64,11 @@
             Related Posts
           </h5>
 
+          <!-- If no related posts -->
+          <p *ngIf="similarPosts.length === 0" class="text-muted fst-italic">
+            No related posts found.
+          </p>
+
           <div class="related-posts">
             <div *ngFor="let post of similarPosts" class="mb-4">
               <app-post-card [post]="post"></app-post-card>
