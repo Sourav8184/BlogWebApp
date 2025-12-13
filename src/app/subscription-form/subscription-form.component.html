@@ -5,23 +5,46 @@
       Get the latest blog posts and updates delivered directly to your inbox.
     </p>
 
-    <form class="row g-3 justify-content-center align-items-center">
+    <form
+      class="row g-3 justify-content-center align-items-center"
+      #subForm="ngForm"
+      (ngSubmit)="onSubmit(subForm)"
+    >
       <div class="col-md-5">
         <input
           type="text"
           class="form-control form-input"
           placeholder="Your Name"
+          name="name"
+          #name="ngModel"
+          ngModel
+          required
         />
+        <small class="text-danger" *ngIf="name.invalid && name.touched">
+          Name is required
+        </small>
       </div>
+
       <div class="col-md-5">
         <input
           type="email"
           class="form-control form-input"
           placeholder="Your Email"
+          name="email"
+          #email="ngModel"
+          ngModel
+          required
+          email
         />
+        <small class="text-danger" *ngIf="email.invalid && email.touched">
+          Enter a valid email
+        </small>
       </div>
+
       <div class="col-md-2 d-grid">
-        <button type="submit" class="btn btn-sub">Subscribe</button>
+        <button type="submit" class="btn btn-sub" [disabled]="subForm.invalid">
+          Subscribe
+        </button>
       </div>
     </form>
   </div>
