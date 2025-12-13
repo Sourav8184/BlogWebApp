@@ -1,4 +1,5 @@
 {
   "SUCCESS": "You have successfully subscribed to our newsletter!",
-  "ERROR": "Something went wrong. Please try again."
+  "ERROR": "Something went wrong. Please try again.",
+  "EMAIL_EXISTS": "This email is already subscribed."
 }

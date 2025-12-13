@@ -20,23 +20,27 @@ export class SubscriptionFormComponent {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      this.submitted = true;
-
       const subscriptionData: Subscription = {
         name: form.value.name,
         email: form.value.email,
       };
 
-      this.subService
-        .addSubscription(subscriptionData)
-        .then(() => {
-          this.toastr.success(this.translate.instant('SUCCESS'));
+      this.subService.emailExists(subscriptionData.email).then((exists) => {
+        if (exists) {
+          this.toastr.error(this.translate.instant('EMAIL_EXISTS'));
+          return;
+        }
 
-          form.reset();
-        })
-        .catch(() => {
-          this.toastr.error(this.translate.instant('ERROR'));
-        });
+        this.subService
+          .addSubscription(subscriptionData)
+          .then(() => {
+            this.toastr.success(this.translate.instant('SUCCESS'));
+            form.reset();
+          })
+          .catch(() => {
+            this.toastr.error(this.translate.instant('ERROR'));
+          });
+      });
     }
   }
 }
